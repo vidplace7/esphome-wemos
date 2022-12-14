@@ -6,25 +6,16 @@ substitutions:
 esphome:
   name: "${name}"
   name_add_mac_suffix: true
-  min_version: "2022.11"  # Tested against '2022.11.5'
+  min_version: "2022.12.0"
   project:
     name: wemos_base.s2-mini
-    version: "0.1"
-  platformio_options:               # Remove after 'lolin_s2_mini' supported properly - ESPHome 2022.12.0
-    board_build.f_flash: 80000000L  # ''
-    board_build.flash_mode: dio     # ''
-    board_build.flash_size: 4MB     # ''
-    board_build.variant: esp32s2    # ''
+    version: "0.2"
 
 esp32:
-  # board: esp32-s2-saola-1  # Fallback if 'lolin_s2_mini' is unstable
   board: lolin_s2_mini
-  variant: esp32s2           # Remove after 'lolin_s2_mini' supported properly - ESPHome 2022.12.0
   framework:
-    # type: esp-idf          # Enable after ESPHome 2022.12.0
-    type: arduino            # Remove after ESPHome 2022.12.0
-    version: 2.0.5           # ''
-    platform_version: 5.2.0  # ''
+    # type: esp-idf  # ESP-IDF still doesn't compile on aarch64, REVIST
+    type: arduino    # Use Arduino for better compatibility, at the cost of increased RAM use
 
 wifi:
   ap: {}  # This spawns an AP with the device name and mac address with no password.

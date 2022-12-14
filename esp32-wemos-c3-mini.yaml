@@ -6,25 +6,16 @@ substitutions:
 esphome:
   name: "${name}"
   name_add_mac_suffix: true
-  min_version: "2022.11"  # Tested against '2022.11.5'
+  min_version: "2022.12.0"
   project:
     name: wemos_base.c3-mini
-    version: "0.1"
-  platformio_options:               # Remove after 'lolin_c3_mini' supported properly - ESPHome 2022.12.0
-    board_build.f_flash: 40000000L  # ''
-    board_build.flash_mode: dio     # ''
-    board_build.flash_size: 4MB     # ''
-    board_build.variant: esp32c3    # ''
+    version: "0.2"
 
 esp32:
-  # board: lolin_c3_mini     # Enable after 'lolin_c3_mini' supported properly - ESPHome 2022.12.0
-  board: esp32-c3-devkitm-1  # Remove after 'lolin_c3_mini' supported properly - ESPHome 2022.12.0
-  variant: esp32c3           # ''
+  board: lolin_c3_mini
   framework:
-    # type: esp-idf          # Enable after ESPHome 2022.12.0
-    type: arduino            # Remove after ESPHome 2022.12.0
-    version: 2.0.5           # ''
-    platform_version: 5.2.0  # ''
+    # type: esp-idf  # Enable once an IDF-compatible WS2812B library is implemented
+    type: arduino    # NeoPixelBus Requires arduino... for now?
 
 wifi:
   ap: {}  # This spawns an AP with the device name and mac address with no password.
