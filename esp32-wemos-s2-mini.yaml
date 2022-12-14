@@ -14,7 +14,7 @@ esphome:
 esp32:
   board: lolin_s2_mini
   framework:
-    # type: esp-idf  # ESP-IDF still doesn't compile on aarch64, REVIST
+    # type: esp-idf  # ESP-IDF doesn't compile on aarch64, 'platformio/toolchain-esp32s2ulp' is too old, REVIST
     type: arduino    # Use Arduino for better compatibility, at the cost of increased RAM use
 
 wifi:
@@ -28,11 +28,11 @@ dashboard_import:
   # Grab the latest version
   package_import_url: github://vidplace7/esphome-wemos/esp32-wemos-s2-mini.yaml
 
-status_led:
-  pin:
-    number: GPIO15
-
 button:
   - platform: safe_mode
     name: "${friendly_name} Safe Mode Boot"
     entity_category: diagnostic
+
+status_led:
+  pin:
+    number: GPIO15
