@@ -10,6 +10,10 @@ esphome:
   project:
     name: wemos_base.c3-mini
     version: "0.2"
+  platformio_options:                  # See defaults at https://github.com/platformio/platform-espressif32/blob/v5.2.0/boards/lolin_c3_mini.json
+    board_build.flash_mode: dio        # Override, defaults to 'qio'
+    board_build.extra_flags:
+      - "-DARDUINO_USB_CDC_ON_BOOT=0"  # Override, defaults to '-DARDUINO_USB_CDC_ON_BOOT=1'
 
 esp32:
   board: lolin_c3_mini
@@ -39,4 +43,4 @@ light:
     variant: WS2812
     pin: 7
     num_leds: 1
-    gamma_correct: 2.0
+    gamma_correct: 1.1
