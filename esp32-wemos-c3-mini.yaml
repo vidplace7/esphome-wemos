@@ -13,7 +13,7 @@ esphome:
   platformio_options:                  # See defaults at https://github.com/platformio/platform-espressif32/blob/v5.2.0/boards/lolin_c3_mini.json
     board_build.flash_mode: dio        # Override, defaults to 'qio'
     board_build.extra_flags:
-      - "-DARDUINO_USB_CDC_ON_BOOT=0"  # Override, defaults to '-DARDUINO_USB_CDC_ON_BOOT=1'
+      - "-DARDUINO_USB_CDC_ON_BOOT=0"  # Override, defaults to '-DARDUINO_USB_CDC_ON_BOOT=1' -- Fixes OTA issues
 
 esp32:
   board: lolin_c3_mini
@@ -21,8 +21,10 @@ esp32:
     # type: esp-idf  # Enable once an IDF-compatible WS2812B library is implemented
     type: arduino    # NeoPixelBus Requires arduino... for now?
 
+
 wifi:
-  ap: {}  # This spawns an AP with the device name and mac address with no password.
+  output_power: "8.5"  # Required on esp32c3
+  ap: {}               # This spawns an AP with the device name and mac address with no password.
 
 api:
 logger:
