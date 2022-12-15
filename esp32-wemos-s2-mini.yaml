@@ -9,7 +9,7 @@ esphome:
   min_version: "2022.12.0"
   project:
     name: wemos_base.s2-mini
-    version: "0.2"
+    version: "0.3"
 
 esp32:
   board: lolin_s2_mini
