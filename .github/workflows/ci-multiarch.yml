@@ -17,11 +17,12 @@ jobs:
           - esp32-wemos-s2-mini.yaml
           - esp8266-wemos-d1-mini.yaml
         version:
+          - latest
           - beta
         platform:
           - linux/amd64
           - linux/arm64
-          - linux/arm/v7
+          # - linux/arm/v7
         include:
           - platform: linux/arm/v7
             accept_failure: true
