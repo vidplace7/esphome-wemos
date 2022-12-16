@@ -6,8 +6,9 @@ on:
 
 jobs:
   ci-multiarch:
-    name: Build ${{ matrix.file }}/${{ matrix.platform }} - ESPHome ${{ matrix.version }}
+    name: Build ${{ matrix.file }} - ${{ matrix.platform }} - ESPHome ${{ matrix.version }}
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.accept_failure || false }}
     strategy:
       fail-fast: false
       matrix:
@@ -19,8 +20,11 @@ jobs:
           - beta
         platform:
           - linux/amd64
-          # - linux/arm64
+          - linux/arm64
           - linux/arm/v7
+        include:
+          - platform: linux/arm/v7
+            accept_failure: true
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
