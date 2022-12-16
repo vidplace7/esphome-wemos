@@ -6,7 +6,7 @@ on:
 
 jobs:
   ci-multiarch:
-    name: Building ${{ matrix.file }}
+    name: Build ${{ matrix.file }}/${{ matrix.platform }} - ESPHome ${{ matrix.version }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -19,8 +19,8 @@ jobs:
           - beta
         platform:
           - linux/amd64
-          - linux/arm64
-          # - linux/arm/v7
+          # - linux/arm64
+          - linux/arm/v7
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
