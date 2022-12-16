@@ -1,11 +1,11 @@
-name: CI
+name: CI-MultiArch
 
 on:
   push:
   pull_request:
 
 jobs:
-  ci:
+  ci-multiarch:
     name: Building ${{ matrix.file }}
     runs-on: ubuntu-latest
     strategy:
@@ -15,11 +15,18 @@ jobs:
           - esp32-wemos-c3-mini.yaml
           - esp32-wemos-s2-mini.yaml
           - esp8266-wemos-d1-mini.yaml
+        version:
+          - beta
+        platform:
+          - linux/amd64
+          - linux/arm64
+          - linux/arm/v7
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
       - name: Build ESPHome firmware to verify configuration
-        uses: esphome/build-action@v1.5.2
+        uses: vidplace7/esphome-build-action@multiarch-testing
         with:
           yaml_file: ${{ matrix.file }}
-          version: latest
+          version: ${{ matrix.version }}
+          platform: ${{ matrix.platform }}
