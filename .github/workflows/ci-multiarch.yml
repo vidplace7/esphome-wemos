@@ -18,7 +18,6 @@ jobs:
           - esp8266-wemos-d1-mini.yaml
         version:
           - latest
-          - beta
         platform:
           - linux/amd64
           - linux/arm64
@@ -29,6 +28,11 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
+      - name: Cache platformio
+        uses: actions/cache@v3
+        with:
+          path: ~/.platformio
+          key: platformio-${{ matrix.file }}-${{ matrix.platform }}-${{ matrix.version }}
       - name: Build ESPHome firmware to verify configuration
         uses: vidplace7/esphome-build-action@multiarch-testing
         with:
