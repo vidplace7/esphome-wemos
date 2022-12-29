@@ -21,10 +21,10 @@ jobs:
         platform:
           - linux/amd64
           - linux/arm64
-          - linux/arm/v7
-        include:
-          - platform: linux/arm/v7
-            accept_failure: true
+        #   - linux/arm/v7
+        # include:
+        #   - platform: linux/arm/v7
+        #     accept_failure: true
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3

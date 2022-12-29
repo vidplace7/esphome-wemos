@@ -18,8 +18,8 @@ esp32:
     type: esp-idf    # Enable esp-idf by default
 
     # esp-idf doesn't compile on aarch64, 'toolchain-esp32s2ulp' must be updated/replaced
-    # Fixed in 'develop' branch of 'platform-espressif32'
-    platform_version: "https://github.com/platformio/platform-espressif32.git#develop"
+    # Fixed in 'platform-espressif32' version 5.3.0
+    platform_version: 5.3.0
 
     # esp-idf 4.4.3 is required by the new ULP toolchains, ESPHome defaults to 4.4.2
     version: 4.4.3
