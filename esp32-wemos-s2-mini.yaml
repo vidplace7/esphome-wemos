@@ -9,7 +9,7 @@ esphome:
   min_version: "2022.12.0"
   project:
     name: wemos_base.s2-mini
-    version: "0.3"
+    version: "0.4"
 
 esp32:
   board: lolin_s2_mini
@@ -18,18 +18,11 @@ esp32:
     type: esp-idf    # Enable esp-idf by default
 
     # esp-idf doesn't compile on aarch64, 'toolchain-esp32s2ulp' must be updated/replaced
-    # Fixed by custom 'platform-espressif32' with updated toolchains from @Jason2866
-    # See: https://github.com/platformio/platform-espressif32/pull/924
-    platform_version: "https://github.com/Jason2866/platform-espressif32.git#new_ULP"
+    # Fixed in 'develop' branch of 'platform-espressif32'
+    platform_version: "https://github.com/platformio/platform-espressif32.git#develop"
 
     # esp-idf 4.4.3 is required by the new ULP toolchains, ESPHome defaults to 4.4.2
     version: 4.4.3
-
-    # esp-idf 4.4.3 is not published on platformio yet. Use Tasmota esp-idf for now.
-    # See: https://registry.platformio.org/tools/platformio/framework-espidf/versions
-    # API: https://api.registry.platformio.org/v3/packages/platformio/tool/framework-espidf
-    source: https://github.com/tasmota/esp-idf/releases/download/v4.4.3/esp-idf-v4.4.3.zip
-
 
 wifi:
   ap: {}  # This spawns an AP with the device name and mac address with no password.
@@ -40,7 +33,7 @@ ota:
 
 dashboard_import:
   # Grab the latest version
-  package_import_url: "github://vidplace7/esphome-wemos/esp32-wemos-s2-mini.yaml"
+  package_import_url: github://vidplace7/esphome-wemos/esp32-wemos-s2-mini.yaml
 
 button:
   - platform: safe_mode
