@@ -29,7 +29,7 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
       - name: Build ESPHome firmware to verify configuration
-        uses: vidplace7/esphome-build-action@feature-multiarch
+        uses: esphome/build-action@v1.7.0
         with:
           yaml_file: ${{ matrix.file }}
           version: ${{ matrix.version }}
